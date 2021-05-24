@@ -22,16 +22,16 @@ jobs:
     steps:
       - uses: actions/checkout@v2
 
-      - name: 'Check Laravel and PHP combination'
-        run: test -f laravel-${{ matrix.laravel }}/php-${{ matrix.php }}/Dockerfile
-
       - name: 'Build image'
+        if: hashFiles('laravel-${{ matrix.laravel }}/php-${{ matrix.php }}/Dockerfile') != ''
         run: docker build . --file laravel-${{ matrix.laravel }}/php-${{ matrix.php }}/Dockerfile --tag $IMAGE_NAME
 
       - name: 'Log into registry'
+        if: hashFiles('laravel-${{ matrix.laravel }}/php-${{ matrix.php }}/Dockerfile') != ''
         run: echo "${{ secrets.CR_PAT }}" | docker login https://ghcr.io -u ${{ github.actor }} --password-stdin
 
       - name: 'Push image'
+        if: hashFiles('laravel-${{ matrix.laravel }}/php-${{ matrix.php }}/Dockerfile') != ''
         run: |
           IMAGE_ID=ghcr.io/${{ github.repository_owner }}/$IMAGE_NAME
 
