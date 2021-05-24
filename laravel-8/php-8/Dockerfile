@@ -4,7 +4,7 @@ FROM php:8-apache
 RUN curl -sL https://deb.nodesource.com/setup_14.x | bash -
 
 # Packages
-RUN apt-get update && apt-get install -y nodejs git libonig-dev libzip-dev zip
+RUN apt-get update && apt-get install -y nodejs git libonig-dev libxml2-dev libzip-dev zip
 
 # PHP extensions
 # List from https://laravel.com/docs/8.x/deployment#server-requirements
