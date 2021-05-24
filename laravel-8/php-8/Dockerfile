@@ -8,7 +8,7 @@ RUN apt-get update && apt-get install -y nodejs git libzip-dev zip
 
 # PHP extensions
 # List from https://laravel.com/docs/8.x/deployment#server-requirements
-RUN docker-php-ext-install bcmath ctype fileinfo json mbstring openssl pdo pdo_mysql tokenizer xml
+RUN docker-php-ext-install bcmath ctype fileinfo json mbstring pdo pdo_mysql tokenizer xml
 # Extra extensions
 RUN docker-php-ext-install zip
 
