@@ -11,8 +11,10 @@ env:
 jobs:
   push:
     runs-on: ubuntu-latest
+    name: 'Laravel ${{ matrix.laravel }} - PHP ${{ matrix.php }}'
 
     strategy:
+      fail-fast: false
       matrix:
         laravel: [8]
         php: [7.4, 8]
